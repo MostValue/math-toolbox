@@ -1,0 +1,105 @@
+---
+title: "Week 1"
+author: "Kerui Yang"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+Observational study is where you observe whats going on.
+Experimental study is where you conduct an experiment.
+
+
+## Question 1  Conceptual excercises
+
+(a) A study found that individuals who lived in houses with more than two bathrooms tended to
+have higher blood pressure than individuals who lived in houses with two or fewer bathrooms.
+Can any causal relationship be inferred from it? What might be a potential confounding
+factor?
+
+    -  Just a correlation. Confounding factors such as money / financial means may impact high blood pressure
+
+(b) An experiment was conducted on 20,000 school children in England. Teachers were responsible
+for randomly assignning their students to a treatment group, who receive 3/4 pint of milk
+each day, or to a control group, who recieve no milk supplement. Weights and heights
+were measured before and after the four-month experiment. The study found that children
+receiving milk gained more weight during the study period. However, on further investigation,
+it was also found that the control were heavier and taller than the treatment group before
+the milk treatment began. What is the likely explanation and the implication concerning the
+validity of the experiment?
+
+    - Biased selection. Teachers assigned milk to students who were shorter/ lighter. 
+
+(c) Suppose that random samples of Caucasian-American and Asian-American individiduals are
+obtained from the patient records of doctors participating in a study to compare blood pressures of the two groups. Suppose that the individuals who got selected are asked whether
+they want to participate and that some decline. The study is conducted only on those that
+volunteer to participate, and a comparison of the distributions of blood pressures is conducted.
+i. Is it an controlled experiment, or an observational study?
+    - Observational study (since there is no randomisation)
+ii. What assumption would be necessary to allow inferences to be made from the sampled
+populations?
+    - Assumptions such as the sample is representation of the population, not just from the population of the consenting people. We need to make the assumption that the reason for withdrawing consent is unrelated to blood pressure.
+```{r}
+mtcars
+```
+
+(a) How many observations and variables are in the dataset?
+    - there are 11 variables and 32 observations
+(b) For each variable, identify whether it is a nominal, ordinal, discrete, or continuous. Note that
+some variables, despite coded numerically, are actually categorical.
+    - mpg (continuous) 
+    - cyl (discrete)
+    - disp (continuous)
+    - hp (continuous)
+    - drat (continuous)
+    - wt (continuous)
+    - qsec (continous)
+    - vs (nominal)
+    - am (nominal)
+    - gear (discrete)
+    - carb (discrete)
+(c) Is the data cross-sectional, time-series, or a panel data?
+    - Cross sectional
+
+\
+
+
+The next set of questions are some additional practices for data wrangling using the tidyverse
+package:
+(d) Count how many observations that have the number of cylinder to be 4, 6, and 8, respectively.
+
+```{r}
+t = tibble(mtcars)
+filter(mtcars, cyl == 4) %>% count(cyl)
+```
+
+
+```{r}
+filter(mtcars, cyl == 6) %>% count(cyl)
+```
+
+
+```{r}
+filter(mtcars, cyl == 8) %>% count(cyl)
+```
+
+(e) Calculate the average fuel consumption (mpg) for the cars with 6 cylinders and manual
+transmission.
+
+```{r}
+t = filter(mtcars, cyl == 6 & am == 1)
+mean(t$mpg)
+```
+
+(f) For the cars with V-shaped engine and weigh at least 3000 lbs, calculate the mean gross
+horsepower corresponding to each number of forward gears.
+```{r}
+t = filter(mtcars, vs == 0 & wt >= 3000)
+t$hp
+```
+
+
