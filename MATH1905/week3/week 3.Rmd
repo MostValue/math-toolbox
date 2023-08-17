@@ -1,5 +1,5 @@
 ---
-title: "week 2"
+title: "Week 3 tut"
 author: "Kerui Yang"
 date: "`r Sys.Date()`"
 output: html_document
@@ -10,11 +10,51 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
-aug.weath=read.csv("http://www.maths.usyd.edu.au/MATH1905/r/syd-10yr-aug.csv)
+aug.weath=read.csv("http://www.maths.usyd.edu.au/MATH1905/r/syd-10yr-aug.csv")
+dim(aug.weath)
+```
+- There are 291 observations and 9 variables
+
+
+```{r}
+aug.weath[1:5,]
+
+```
+- Returns the first 5 rows, and give me all of the columns
+
+```{r}
+aug.max=aug.weath$Max_temperature
+```
+
+Let us make a histogram of the max temperature.
+
+```{r}
+hist(aug.max)
+```
+
+
+## Comparing Aug vs Feb
+```{r}
+feb.weath=read.csv("http://www.maths.usyd.edu.au/MATH1905/r/syd-10yr-feb.csv")
+dim(feb.weath)
+```
+```{r}
+feb.max=feb.weath$Max_temperature
+hist(feb.max)
+```
+
+#### Producing the same histograms with the same horizontal scale and intervals
+
+```{r}
+br=13:42
+par(mfrow=c(2,1))
+hist(aug.max,breaks=br)
+hist(feb.max,breaks=br)
 ```
 
 
 ```{r}
-
+c(mean(aug.max), mean(feb.max))
+c(sd(aug.max), sd(feb.max))
 ```
 
