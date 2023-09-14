@@ -72,3 +72,62 @@ COV(x,y)  = E(XY) - mu_X mu_Y
 E_XY = 0
 ```
 
+### Calculate P({X> 1}) | {Y < 2}). Are X and Y independent?
+
+
+
+```{r}
+
+# First find P(Y <2)
+PY_less_than_2 <- sum(data_matrix[1,])
+
+# Calulate P( X > 1| Y < 2)
+PX_given_Y_1_2 <- sum(data_matrix[1, 2:3]) / PY_less_than_2
+
+PX_given_Y_1_2
+
+```
+X and Y are not independent because they're joint probabilities.
+
+# Question 2:
+
+
+ A local bank decides whether a person can take a loan based on their income and credit score. The weekly income of the people in the town is distributed with a mean of 1000 and stdev of 250. The credit score of people in the sam town also follows a distribution with a mean of 700 and the standard dev is 36. Suppose the correlation between credit score and weekly income is 0.2.
+ 
+ 
+ 
+ 
+ The bank creates an index to assess its customers’ profile. The index is the sum of 30% of
+weekly income and 70% of credit score: I1 = 0.3 Income + 0.7 Credit Score. calculate the
+expected value and the standard deviation of the index for people in this town
+
+
+
+Note that expected value is linear:
+
+E(I1) = E( 0.3 x income  + 0.7 x Credit score)
+
+
+```{r}
+
+E_In = 1000
+E_cr = 700
+E_l1 = 0.3*E_In + 0.7*E_cr
+
+E_l1
+```
+
+
+Var(I1) = Var(0.3X + 0.7Y)
+= Var(0.3x) + Var(0.7Y) + 2 cov(0.3X, 0.7Y)
+=  0.3^2Var(X) + 0.7^2Var(Y) + 20.3* 0.7 *cov(X,Y)
+
+cov(X,Y) = sd(X) * Sd(y) *2
+
+```{r}
+
+```
+
+
+
+
