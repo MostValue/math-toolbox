@@ -1,0 +1,74 @@
+---
+title: "week 7"
+author: "Kerui Yang"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r}
+data_matrix <- matrix(c(0.42, 0.12, 0.05, 0.28, 0.08, 0.05), nrow = 2, byrow = TRUE)
+```
+
+```{r}
+colnames(data_matrix) <- c('1', '2', '3')
+rownames(data_matrix) <- c('1', '2')
+```
+
+```{r}
+data_df <- as.data.frame(data_matrix)
+print(data_df)
+```
+```{r}
+
+#Check if all number of between 0 and 1
+is_valid_elements <- all(data_matrix >= 0 & data_matrix <= 1)
+
+
+#Check if the sum = 1
+is_valid_sum <- sum(data_matrix) == 1
+
+#Verify the joint PMF
+is_valid_pmf <- is_valid_elements && is_valid_sum
+
+```
+
+
+## Calculate the marginal distribution of X and Y and the corresponding marginal means.
+
+
+```{r}
+
+#Calculating Marginal distributions
+marginal_X <- colSums(data_matrix)
+marginal_Y <- rowSums(data_matrix)
+
+#Calculate marginal sums
+mu_X <- sum(as.numeric(colnames(data_matrix)) * marginal_X)
+mu_Y <- sum(as.numeric(rownames(data_matrix)) * marginal_Y)
+#calculate marginal variances
+var_X <- sum((as.numeric(colnames(data_matrix)) - mu_X)^2 *marginal_X)
+var_Y <- sum((as.numeric(rownames(data_matrix)) - mu_Y)^2 *marginal_Y)
+
+
+c(marginal_X, marginal_Y, mu_X, mu_Y, var_X, var_Y)
+```
+### Calculate the correlation between X and Y.
+
+The correlation of X and Y is given by (COV(x,y)) / S.Dx * S.Dy
+
+
+COV(x,y)  = E(XY) - mu_X mu_Y 
+
+```{r}
+
+
+
+E_XY = 0
+```
+

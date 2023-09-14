@@ -1,0 +1,101 @@
+---
+title: "week5-tut"
+author: "Kerui Yang"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+tab <- matrix(c(35,42,63,91,104,65,23,27,50),
+              ncol=3,
+              byrow=TRUE)
+colnames(tab) <- c('Business', 'Engineering', 'others')
+rownames(tab) <- c('Yes','No','Unsure')
+tab <- as.table(tab)
+tab
+```
+
+a) what percent of studenst are unsure about whether they go to a graduate shcool?
+
+```{r}
+sum(tab)
+total = sum(tab)
+```
+
+```{r}
+total_Yes = sum(tab[1,])
+total_No = sum(tab[2,])
+total_unsure = sum(tab[3,])
+```
+```{r}
+percent = (total_unsure / total)
+percent
+```
+
+
+b) Among engineering students, what percent of them plan to go to a graduate school?
+
+```{r}
+total_engineering = sum(tab[,2])
+percent = (tab[1,2] / total_engineering)
+percent
+```
+c) Among students who plan to go to a graduate school, what percent of them are not engineering
+majors?
+
+```{r}
+(tab[1,1] + tab[1,3])/total_Yes
+
+```
+
+d) What percent of students are either business or engineering majors and are not unsure about
+whether they go to a graduate school or not?
+
+```{r}
+total_unsure = sum(tab[3,])
+sum(tab[1:2,1:2]) / total 
+```
+
+
+
+## Question 3
+Consider the experiment of rolling a pair of fair dice.
+(a) How many outcomes are in the sample space?
+```{r}
+6*6
+```
+(b) What is the probability of rolling a 5 (total of the pair is 5)?
+
+```{r}
+sample_space <- expand.grid(Die1 = 1:6, Die2 = 1:6)
+sample_space
+```
+```{r}
+success_cases <- subset(sample_space, Die1 + Die2 == 5)
+success_cases 
+```
+```{r}
+probability <- nrow(success_cases) / nrow(sample_space)
+probability
+```
+
+(c) What is the probability of rolling an 8 or greater?
+```{r}
+success_cases <- subset(sample_space, Die1 + Die2 >= 8)
+probability <- nrow(success_cases) / nrow(sample_space)
+probability
+```
+
+
+### Quesion 4:
+
+
+```{r}
+
+
+```
+
