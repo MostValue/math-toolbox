@@ -1,0 +1,46 @@
+---
+title: "week-8"
+author: "Kerui Yang"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+A new surgical procedure is said to be successful 80% of the time. Suppose that the operation
+is performed 8 times, with the results being independent of each other. Let X be the number of
+success of this operation.
+(i) What particular type of distribution does the random variable X have? State the values of
+the parameters.
+(ii) Find the probabilities that (a) exactly three operations are successful; (b) fewer than five
+operations are successful; and (c) more than three are successful.
+(iii) What are the expected number and variance of the number of successes out of 8 operations?
+
+
+```{r}
+
+```
+
+
+if 
+
+iii) What are the expected number and variance of the number of successes out of 8 operations?
+
+```{r}
+n= 8
+p = 0.8
+E_x = n*p
+E_x
+Var = n*p*(1-p)
+Var
+```
+
+
+
+```{r}
+  
+```
+
